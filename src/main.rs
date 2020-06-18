@@ -2,13 +2,13 @@ use std::io;
 use std::char;
 
 fn main() {
-    println!("Welcome to Rust Knoughts & Crosses!");
+    println!("Welcome to Rust Noughts & Crosses!");
 
     let mut board: [i8; 9] = [0; 9]; // 0 for untaken, 1 for knought, -1 for cross
     let mut turn = true;
 
     loop {
-        let player = if turn { "Knoughts" } else { "Crosses" };
+        let player = if turn { "Noughts" } else { "Crosses" };
 
         println!("{}' turn", player);
         draw_board(&board);
