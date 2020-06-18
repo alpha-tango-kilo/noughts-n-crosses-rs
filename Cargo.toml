@@ -1,5 +1,5 @@
 [package]
-name = "Knoughts-n-Crosses"
+name = "knoughts-n-crosses"
 version = "0.1.0"
 authors = ["alpha-tango-kilo <atk@aaathats3as.com>"]
 edition = "2018"
