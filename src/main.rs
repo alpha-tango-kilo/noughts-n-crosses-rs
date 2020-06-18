@@ -1,4 +1,5 @@
 use std::io;
+use std::char;
 
 fn main() {
     println!("Welcome to Rust Knoughts & Crosses!");
@@ -13,7 +14,7 @@ fn main() {
         draw_board(&board);
 
         loop {
-            println!("Where would you like to play?");
+            println!("Where would you like to play? (Numbers in cells indicate available positions)");
 
             // Take input
             let mut choice = String::new();
@@ -42,6 +43,7 @@ fn main() {
         // Check for a win
         if check_win(&board) {
             println!("{} won! Congratulations", player);
+            draw_board(&board);
             break;
         }
         turn = !turn;
@@ -65,8 +67,8 @@ fn check_win(&arr: &[i8; 9]) -> bool {
 }
 
 fn draw_board(&arr: &[i8; 9]) {
-    for (n, cell) in arr.iter().enumerate() {
-        print!(" {} ", cell_to_char(cell)); //if cell == 0 { n } else if cell == 1 { 'O' } else { 'X' }
+    for (n, &cell) in arr.iter().enumerate() {
+        print!(" {} ", if cell == 0 { char::from_digit((n + 1) as u32, 10).expect("Enumeration index was not an int") } else if cell == 1 { 'O' } else { 'X' });
         if n % 3 != 2 {
             print!("|");
         } else if n != 8 {
@@ -74,14 +76,4 @@ fn draw_board(&arr: &[i8; 9]) {
         }
     }
     println!();
-}
-
-fn cell_to_char(&val: &i8) -> char {
-    if val == 0 {
-        ' '
-    } else if val == 1 {
-        'O'
-    } else {
-        'X'
-    }
 }
