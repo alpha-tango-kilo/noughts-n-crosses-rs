@@ -62,7 +62,7 @@ fn check_win(arr: &[CellState; 9]) -> bool {
     if (arr[0] != CellState::Empty && arr[0] == arr[4] && arr[0] == arr[8]) || (arr[2] != CellState::Empty && arr[2] == arr[4] && arr[2] == arr[6]) {
         return true;
     } else {
-        for n in 0..2 {
+        for n in 0..=2 {
             let offset = n * 3;
             // First clause rows, second clause columns
             if (arr[offset] != CellState::Empty && arr[offset] == arr[offset + 1] && arr[offset] == arr[offset + 2]) || (arr[n] != CellState::Empty && arr[n] == arr[n + 3] && arr[n] == arr[n + 6]) {
